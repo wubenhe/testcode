@@ -3,6 +3,7 @@
   var url = 'http://104.154.33.188:8000/beacon/',
     signals = {},
     requestSended = false,
+    timer = null,
     options = {timeout:60000};
 
   var setClientData = function () {
@@ -93,6 +94,7 @@
   var sendImageRequest = function() {
     if(!requestSended) {
       console.log('image send');
+      clearTimeout(timer);
       requestSended = true;
       var n = new Image(1, 1);
       n.src = url+'?'+serializeString(signals);
@@ -113,6 +115,6 @@
   setClientData();
   setStaticData();
   setLocationData(signals.onlyLiteSignals);
-  setTimeout(sendImageRequest, options.timeout);
+  timer = setTimeout(sendImageRequest, options.timeout);
 
 })(window);
