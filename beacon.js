@@ -80,14 +80,14 @@
         signals.heading = coords.heading;
         signals.speed = coords.speed;
         console.log('geo success');
-        sendFinalHttpRequest();
+        sendImageRequest();
       }, function(){
         console.log('geo fail');
-        sendFinalHttpRequest();
+        sendImageRequest();
       }, options);
     } else {
       console.log('geo not found');
-      sendFinalHttpRequest();
+      sendImageRequest();
     }
   };
 
